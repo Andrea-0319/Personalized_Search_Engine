@@ -6,7 +6,7 @@ Build and evaluate a personalized retrieval pipeline over a large-scale communit
 ## Description 📝  
 This project uses the SE-PQA dataset (~1.1 M questions, 2.17 M answers, 589 k users across 50 StackExchange sites) to design and implement an end-to-end information retrieval and personalization workflow. From indexing with BM25 through neural re-ranking, query expansion, and tag-based personalization, we explore how each component contributes to ranking quality and user satisfaction.  
 
-**Pipeline Overview:**  
+### Pipeline Overview:
 1. **Data Preparation & Indexing** 🔧  
    - Clean and normalize text (case-folding, lemmatization)  
    - Build a unified PyTerrier index with Elasticsearch (BM25) first stage  
@@ -18,30 +18,21 @@ This project uses the SE-PQA dataset (~1.1 M questions, 2.17 M answers, 589 k us
 4. **Query Expansion** ✍️  
    - Generate expanded queries using T5-small (controlled max_new_tokens)  
 5. **Personalization** 🏷️  
-   - Compute tag-overlap scores between asker and answerer (“TAG” model)  
+   - Compute tag-overlap scores between asker and answerer (“TAG” model)  (incomplete) 
 6. **Fusion Strategies** 🔄  
    - Combine BM25, neural scores, expansion and TAG via Reciprocal Rank Fusion (RRF) or weighted sum  
 7. **Evaluation** 📊  
-   - Compare metrics across base vs. personalized setups: P@1, Recall@100, MAP@100, NDCG@3  
+   - Compare metrics across setups: P@1, Recall@100, MAP@100, NDCG@3  
 
-## Objectives 🥅  
+### Objectives 🥅  
 - Establish a strong BM25 baseline and tune its hyperparameters  
 - Assess the impact of neural re-ranking models (MiniLM, DistilBERT QA, MonoT5)  
 - Quantify gains from T5-based query expansion  
-- Integrate lightweight tag-based personalization for user-aware ranking  
+- Integrate lightweight tag-based personalization for user-aware ranking (incomplete)
 - Devise effective fusion strategies to blend all signals  
 
-## Main Results 🏆  
-- **BM25 Baseline:**  
-  - P@1 ≈ 0.71 | Recall@100 ≈ 0.93 | MAP@100 ≈ 0.77 | NDCG@3 ≈ 0.77  
-- **Neural Re-ranking:**  
-  - MonoT5-base fine-tuning yields +47 % relative MAP@100 improvement  
-- **Query Expansion (T5):**  
-  - Optimal `max_new_tokens=10` delivers modest P@1 uplift (~0.72)  
-- **Fusion:**  
-  - Weighted sum (BM25 0.2, neural 0.15 each, T5 0.5) boosts NDCG@3 to ~0.78  
-- **Personalization (TAG):**  
-  - Adds up to +8 % relative MAP@100 and consistent gains in P@1 & NDCG when fused with any model  
+### Main Results 🏆  
+<img width="507" height="280" alt="Screenshot 2025-07-22 175144" src="https://github.com/user-attachments/assets/7f491d0e-6dfd-4def-a687-35997e45da3f" />
 
 ## Technologies Used 💻  
 - **Python**  
