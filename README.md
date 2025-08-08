@@ -42,6 +42,6 @@ This project uses the SE-PQA dataset (~1.1 M questions, 2.17 M answers, 589 k us
 - **Elasticsearch / BM25** (first-stage indexing)  
 - **HuggingFace Transformers** (MiniLM, DistilBERT QA, MonoT5, T5-small)  
 - **Adapters** (parameter-efficient fine-tuning)  
-- **rangx** (evaluation metrics)  
+- **ranx** (evaluation metrics)  
 - **Jupyter Notebook** (experimentation & reporting)  
 - Utility libraries: **pandas**, **NumPy**, **scikit-learn**, **json**, **pickle**
